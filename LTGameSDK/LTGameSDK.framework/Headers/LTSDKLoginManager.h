@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "LTUser.h"
-#define QQ_FW false
-#define WX_FW false
+#define QQ_FW true
+#define WX_FW true
 #define GOOGLE_FW true
 #define FB_FW true
 NS_ASSUME_NONNULL_BEGIN
@@ -23,7 +23,7 @@ typedef void (^loginUserBlock)(LTUser *loginUser);
  @param appId 应用ID
  @param appkey 应用Key
  */
--(void)registLTPlatformAppID:(NSString *)appId withAppkey:(NSString *)appkey withUIViewController:(UIViewController *)uc;
+-(void)registLTPlatformAppID:(NSString *)appId withAppkey:(NSString *)appkey;
 #if GOOGLE_FW
 /**
  google平台注册
@@ -90,7 +90,7 @@ typedef void (^loginUserBlock)(LTUser *loginUser);
  @param uc 当前界面所在的UIViewController
  @param block 回调通知
  */
--(void)showLoginManagerUI:(UIViewController *)uc withBlock:(loginUserBlock)block isShowGuestButton:(BOOL)isShowGuestButton;
+-(void)showLoginManagerUI:(UIViewController *)uc withBlock:(loginUserBlock)block;
 #pragma mark 手机号注册相关
 /**
  发送验证码
@@ -138,13 +138,9 @@ typedef void (^loginUserBlock)(LTUser *loginUser);
  */
 -(void)getUserLoginState:(loginUserBlock)block;
 /**
- 退出登录(清空信息，不弹出登录框)
+ 退出登录
  */
 -(void)userLogout;
-/**
- 退出登录（清空信息弹出登录框）
- */
--(void)userLogoutToLoginUI:(UIViewController *)uc withBlock:(loginUserBlock)block isShowGuestButton:(BOOL)isShowGuestButton;
 /**
  设置用户协议和隐私条款连接
 
